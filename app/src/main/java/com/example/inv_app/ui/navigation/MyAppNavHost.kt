@@ -5,29 +5,29 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.inv_app.data.model.ScreensRoutes
+import com.example.inv_app.data.model.ViewRoutes
 import com.example.inv_app.ui.view.CameraScreen
 import com.example.inv_app.ui.view.CameraPreviewScreen
 import com.example.inv_app.ui.view.HomeView
 
 @Composable
 fun MyAppNavHost(
-    navController: NavHostController = rememberNavController()
+    navController: NavHostController
 ) {
     NavHost(
         navController = navController,
-        startDestination = ScreensRoutes.homeScreen.route
+        startDestination = ViewRoutes.scannerView.route
     ) {
-        composable(ScreensRoutes.homeScreen.route) {
+        composable(ViewRoutes.scannerView.route) {
             HomeView(
-                onNavigateToCamera = { navController.navigate(ScreensRoutes.cameraScreens.route) }
+                onNavigateToCamera = { navController.navigate(ViewRoutes.listsView.route) }
             )
         }
-        composable(ScreensRoutes.cameraScreens.route) {
+        composable(ViewRoutes.listsView.route) {
             CameraScreen(
-                onNavigateToCameraPreview = { navController.navigate(ScreensRoutes.cameraPreviewScreens.route) }
+                onNavigateToCameraPreview = { navController.navigate(ViewRoutes.reportsView.route) }
             )
         }
-        composable(ScreensRoutes.cameraPreviewScreens.route) { CameraPreviewScreen() }
+        composable(ViewRoutes.reportsView.route) { CameraPreviewScreen() }
     }
 }
