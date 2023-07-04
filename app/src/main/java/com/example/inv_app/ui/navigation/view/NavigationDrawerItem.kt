@@ -6,6 +6,9 @@ import androidx.compose.runtime.Composable
 import  androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.window.Popup
+import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -21,11 +24,20 @@ fun NavigationDrawerItem(
         label = { Text(text = item.title) },
         selected = false,
         onClick = {
-            navController.navigate(item.route)
+            navController.navigate(item.route) {
+                popUpTo(navController.graph.findStartDestination().id)
+                launchSingleTop = true
+                restoreState = true
+            }
             scope.launch { drawerState.close() }
         },
         modifier = Modifier,
-        icon = { Icon(imageVector = item.icon, contentDescription = item.description) },
+        icon = {
+            Icon(
+                painter = painterResource(id = item.icon),
+                contentDescription = item.description
+            )
+        },
         badge = null
     )
 }

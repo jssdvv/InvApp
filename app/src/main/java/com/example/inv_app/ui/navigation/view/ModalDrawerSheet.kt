@@ -20,8 +20,12 @@ fun ModalDrawerSheet(
     navController: NavHostController
 ) {
     val items : List<NavigationItems> = listOf(
+        NavigationItems.homeItem,
         NavigationItems.scannerItem,
-        NavigationItems.listsItem
+        NavigationItems.listsItem,
+        NavigationItems.reportsItem,
+        NavigationItems.formatsItem,
+        NavigationItems.contactsItem
     )
     ModalDrawerSheet(
         modifier = Modifier
