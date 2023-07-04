@@ -6,9 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.inv_app.data.model.ViewRoutes
-import com.example.inv_app.ui.view.CameraScreen
-import com.example.inv_app.ui.view.CameraPreviewScreen
-import com.example.inv_app.ui.view.HomeView
+import com.example.inv_app.ui.view.*
 
 @Composable
 fun MyAppNavHost(
@@ -16,18 +14,17 @@ fun MyAppNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = ViewRoutes.scannerView.route
+        startDestination = ViewRoutes.homeView.route
     ) {
-        composable(ViewRoutes.scannerView.route) {
+        composable(ViewRoutes.homeView.route) {
             HomeView(
                 onNavigateToCamera = { navController.navigate(ViewRoutes.listsView.route) }
             )
         }
-        composable(ViewRoutes.listsView.route) {
-            CameraScreen(
-                onNavigateToCameraPreview = { navController.navigate(ViewRoutes.reportsView.route) }
-            )
-        }
-        composable(ViewRoutes.reportsView.route) { CameraPreviewScreen() }
+        composable(ViewRoutes.scannerView.route) { ScannerView() }
+        composable(ViewRoutes.listsView.route) { ListsView() }
+        composable(ViewRoutes.reportsView.route) { ReportsView() }
+        composable(ViewRoutes.formatsView.route) { FormatsView() }
+        composable(ViewRoutes.contactsView.route) { ContactsView() }
     }
 }
