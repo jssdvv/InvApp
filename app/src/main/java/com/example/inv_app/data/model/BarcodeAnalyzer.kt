@@ -1,5 +1,6 @@
 package com.example.inv_app.data.model
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.widget.Toast
 import androidx.camera.core.ImageAnalysis
@@ -10,31 +11,33 @@ import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 
 class BarcodeAnalyzer(
-    private val context: Context
+    private val onCodeScanned: (barcodes: MutableList<Barcode>) -> Unit
 ) : ImageAnalysis.Analyzer {
-
+    @SuppressLint("UnsafeOptInUsageError")
     override fun analyze(imageProxy: ImageProxy) {
-
         val options = BarcodeScannerOptions.Builder()
-            .setBarcodeFormats(Barcode.FORMAT_CODE_128)
+            .setBarcodeFormats(
+                Barcode.FORMAT_CODE_128,
+                Barcode.FORMAT_QR_CODE
+            )
+            .enableAllPotentialBarcodes()
             .build()
-
         val scanner = BarcodeScanning.getClient(options)
         val mediaImage = imageProxy.image
-
-        mediaImage?.let {
-            val image = InputImage.fromMediaImage(mediaImage, imageProxy.imageInfo.rotationDegrees)
-
-            val result = scanner.process(image)
-                .addOnSuccessListener {barcodes ->
-                    for (barcode in barcodes) {
-                        val rawValue = barcode.rawValue
-                        Toast.makeText(context,"Código: ${rawValue}", Toast.LENGTH_SHORT).show()
-                        println(rawValue)
-                    }
+        mediaImage?.let { imageToAnalyze ->
+            val imageToProcess = InputImage.fromMediaImage(
+                imageToAnalyze,
+                imageProxy.imageInfo.rotationDegrees
+            )
+            scanner.process(imageToProcess)
+                .addOnSuccessListener { barcodes ->
+                    onCodeScanned(barcodes)
                 }
-                .addOnFailureListener{
-
+                .addOnFailureListener {failure ->
+                    failure.printStackTrace()
+                }
+                .addOnCompleteListener {
+                    imageProxy.close()
                 }
         }
         imageProxy.close()

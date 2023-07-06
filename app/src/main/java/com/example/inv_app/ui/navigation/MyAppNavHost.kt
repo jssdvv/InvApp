@@ -18,7 +18,7 @@ fun MyAppNavHost(
     ) {
         composable(ViewRoutes.homeView.route) {
             HomeView(
-                onNavigateToCamera = { navController.navigate(ViewRoutes.listsView.route) }
+                onNavigateToCamera = { navController.navigate(ViewRoutes.scannerView.route) }
             )
         }
         composable(ViewRoutes.scannerView.route) { ScannerView() }
