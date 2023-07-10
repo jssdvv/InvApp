@@ -93,6 +93,10 @@ dependencies {
     def mlkit_version = "17.1.0"
     implementation "com.google.mlkit:barcode-scanning:${mlkit_version}"
 
+    //Zxing
+    def zxing_version = "3.5.1"
+    implementation("com.google.zxing:core:${zxing_version}")
+
     //Dagger Hilt
     def hilt_version = "2.44"
     implementation "com.google.dagger:hilt-android:${hilt_version}"

@@ -1,9 +1,9 @@
 package com.example.inv_app.ui.navigation.view
 
+import androidx.compose.material3.DrawerState
+import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.inv_app.ui.navigation.MyAppNavHost
 import kotlinx.coroutines.CoroutineScope
@@ -16,11 +16,13 @@ fun Scaffold(
 ) {
     Scaffold(
         modifier = Modifier,
-        topBar = { TopAppBar(
-            drawerState,
-            scope
-        ) },
-    ) {
-        MyAppNavHost(navController)
+        topBar = {
+            TopAppBar(
+                drawerState,
+                scope
+            )
+        },
+    ) { paddingValues ->
+        MyAppNavHost(paddingValues, navController)
     }
 }
