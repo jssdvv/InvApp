@@ -1,4 +1,4 @@
-package com.example.inv_app.ui.viewmodel
+package com.example.inv_app.ui.screens
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -7,9 +7,9 @@ import  androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.window.Popup
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
+import com.example.inv_app.ui.navigation.NavigationItems
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

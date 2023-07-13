@@ -1,17 +1,13 @@
 package com.example.inv_app.ui.navigation
 
-import android.view.Window
-import android.view.WindowInsets
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.windowInsetsTopHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.inv_app.data.model.ViewRoutes
+import com.example.inv_app.data.model.ScreenViewRoutes
 import com.example.inv_app.ui.view.*
 
 @Composable
@@ -22,17 +18,17 @@ fun MyAppNavHost(
     NavHost(
         modifier = Modifier.padding(paddingValues),
         navController = navController,
-        startDestination = ViewRoutes.homeView.route
+        startDestination = ScreenViewRoutes.homeScreenView.route
     ) {
-        composable(ViewRoutes.homeView.route) {
+        composable(ScreenViewRoutes.homeScreenView.route) {
             HomeView(
-                onNavigateToCamera = { navController.navigate(ViewRoutes.scannerView.route) }
+                onNavigateToCamera = { navController.navigate(ScreenViewRoutes.scannerScreenView.route) }
             )
         }
-        composable(ViewRoutes.scannerView.route) { ScannerView() }
-        composable(ViewRoutes.listsView.route) { ListsView() }
-        composable(ViewRoutes.reportsView.route) { ReportsView() }
-        composable(ViewRoutes.formatsView.route) { FormatsView() }
-        composable(ViewRoutes.contactsView.route) { ContactsView() }
+        composable(ScreenViewRoutes.scannerScreenView.route) { ScannerView() }
+        composable(ScreenViewRoutes.listsScreenView.route) { ListsView() }
+        composable(ScreenViewRoutes.reportsScreenView.route) { ReportsView() }
+        composable(ScreenViewRoutes.formatsScreenView.route) { FormatsView() }
+        composable(ScreenViewRoutes.contactsScreenView.route) { ContactsView() }
     }
 }

@@ -1,10 +1,9 @@
-package com.example.inv_app.ui.viewmodel
+package com.example.inv_app.ui.screens.scanner_screen
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class CameraViewModel @Inject constructor() : ViewModel() {
-
+class ScannerViewModel @Inject constructor() : ViewModel() {
 }
