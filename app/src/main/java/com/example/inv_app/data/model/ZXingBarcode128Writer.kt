@@ -7,7 +7,7 @@ import com.google.zxing.common.BitMatrix
 import android.graphics.Color
 
 @Suppress("UNREACHABLE_CODE")
-class ZxingBarcode128Writer() {
+class ZXingBarcode128Writer() {
 
     private val multiFormatWriter = MultiFormatWriter()
 

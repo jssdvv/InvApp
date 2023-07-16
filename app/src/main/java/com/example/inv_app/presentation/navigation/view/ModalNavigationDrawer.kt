@@ -1,4 +1,4 @@
-package com.example.inv_app.ui.navigation.view
+package com.example.inv_app.presentation.navigation.view
 
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -7,7 +7,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
-import com.example.inv_app.ui.navigation.viewmodel.NavigationViewModel
+import com.example.inv_app.presentation.navigation.viewmodel.NavigationViewModel
 
 @Composable
 fun ModalNavigationDrawer() {

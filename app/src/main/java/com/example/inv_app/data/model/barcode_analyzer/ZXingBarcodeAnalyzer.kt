@@ -1,7 +1,6 @@
 package com.example.inv_app.data.model.barcode_analyzer
 
 import android.graphics.ImageFormat
-import android.util.Log
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.zxing.BarcodeFormat
@@ -10,7 +9,7 @@ import com.google.zxing.DecodeHintType
 import com.google.zxing.MultiFormatReader
 import com.google.zxing.PlanarYUVLuminanceSource
 import com.google.zxing.common.HybridBinarizer
-
+//Fix this analyzer
 class ZXingBarcodeAnalyzer(
     private val onBarcodeScanned: (String) -> Unit
 ) : ImageAnalysis.Analyzer {
@@ -31,15 +30,16 @@ class ZXingBarcodeAnalyzer(
             get(byteArray)
         }
 
-        if (rotationDegrees != 0) {
-            return rotatedByteArray(
+        return if (rotationDegrees != 0) {
+            rotatedByteArray(
                 byteArray,
                 rotationDegrees,
                 image.height,
                 image.width
             )
+        } else {
+            byteArray
         }
-        return byteArray
     }
 
     private fun rotatedByteArray(
@@ -88,20 +88,17 @@ class ZXingBarcodeAnalyzer(
         )
     )
 
+    override fun analyze(imageProxy: ImageProxy) {
 
-    override fun analyze(image: ImageProxy) {
+        if (imageProxy.format in imageFormats) {
 
-        if (image.format in imageFormats) {
-
-            val byteArray = imageToByteArray(image)
+            val byteArray = imageToByteArray(imageProxy)
             var height = 0
             var width = 0
 
-            Log.d("rotación", image.imageInfo.rotationDegrees.toString())
-
-            if (image.imageInfo.rotationDegrees != 180 && image.imageInfo.rotationDegrees != 0) {
-                height = image.width
-                width = image.height
+            if (imageProxy.imageInfo.rotationDegrees != 180 && imageProxy.imageInfo.rotationDegrees != 0) {
+                height = imageProxy.width
+                width = imageProxy.height
             }
 
             val planarYUVLuminanceSource = PlanarYUVLuminanceSource(
@@ -119,15 +116,14 @@ class ZXingBarcodeAnalyzer(
             try {
                 val result = MultiFormatReader().apply {
                     setHints(barcodeFormats)
-                }.decode(binaryBitmap)
-                Log.d("Barcode", result.text)
+                }.decodeWithState(binaryBitmap)
                 onBarcodeScanned(result.text)
             } catch (e: Exception) {
-                Log.e("NoCode", "No barcodes detected")
                 e.printStackTrace()
             } finally {
-                image.close()
+                imageProxy.close()
             }
+            imageProxy.close()
         }
     }
 }

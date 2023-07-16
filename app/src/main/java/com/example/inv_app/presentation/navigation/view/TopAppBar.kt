@@ -1,4 +1,4 @@
-package com.example.inv_app.ui.navigation.view
+package com.example.inv_app.presentation.navigation.view
 
 import androidx.compose.runtime.Composable
 import androidx.compose.material3.*

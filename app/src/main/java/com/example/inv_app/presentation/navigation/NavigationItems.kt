@@ -1,4 +1,4 @@
-package com.example.inv_app.ui.navigation
+package com.example.inv_app.presentation.navigation
 
 import com.example.inv_app.R
 import com.example.inv_app.data.model.ScreenViewRoutes

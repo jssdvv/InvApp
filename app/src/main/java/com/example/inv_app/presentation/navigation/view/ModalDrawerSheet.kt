@@ -1,4 +1,4 @@
-package com.example.inv_app.ui.navigation.view
+package com.example.inv_app.presentation.navigation.view
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
@@ -10,7 +10,7 @@ import androidx.compose.material3.Text
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.inv_app.ui.navigation.NavigationItems
+import com.example.inv_app.presentation.navigation.NavigationItems
 import kotlinx.coroutines.CoroutineScope
 
 @Composable

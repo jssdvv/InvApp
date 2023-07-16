@@ -1,4 +1,4 @@
-package com.example.inv_app.ui.navigation.viewmodel
+package com.example.inv_app.presentation.navigation.viewmodel
 
 import androidx.compose.material3.DrawerValue
 import androidx.lifecycle.ViewModel
