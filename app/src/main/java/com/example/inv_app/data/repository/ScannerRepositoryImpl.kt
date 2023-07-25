@@ -1,5 +1,6 @@
 package com.example.inv_app.data.repository
 
+import android.view.View
 import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.Preview
@@ -7,41 +8,46 @@ import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.lifecycle.LifecycleOwner
 import com.example.inv_app.domain.repository.ScannerRepository
+import com.google.common.util.concurrent.ListenableFuture
+import kotlinx.coroutines.flow.MutableStateFlow
 import java.util.concurrent.Executor
 import javax.inject.Inject
 
 class ScannerRepositoryImpl @Inject constructor(
-    private val processCameraProvider: ProcessCameraProvider,
-    private val preview: Preview,
+    private val cameraProviderFuture: MutableStateFlow<ListenableFuture<ProcessCameraProvider>>,
+    private val cameraProvider: ProcessCameraProvider,
+    private val previewView: PreviewView,
+    private val executor: Executor,
+    private val cameraSelector: CameraSelector,
     private val imageAnalysis: ImageAnalysis,
-    private val cameraSelector: CameraSelector
+    private val preview: Preview
 ) : ScannerRepository {
 
-    override suspend fun showCameraPreview(
-        previewView: PreviewView,
+    override fun showCameraPreview(
         lifecycleOwner: LifecycleOwner,
-        executor: Executor,
         analyzer: ImageAnalysis.Analyzer,
-        torchState: Boolean
-    ) {
-        imageAnalysis.setAnalyzer(
-            executor,
-            analyzer
+    ): View {
+        cameraProviderFuture.value.addListener(
+            {
+                imageAnalysis.setAnalyzer(
+                    executor,
+                    analyzer
+                )
+                try {
+                    cameraProvider.unbindAll()
+                    cameraProvider.bindToLifecycle(
+                        lifecycleOwner,
+                        cameraSelector,
+                        imageAnalysis,
+                        preview
+                    )
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            },
+            executor
         )
         preview.setSurfaceProvider(previewView.surfaceProvider)
-        try {
-            processCameraProvider.unbindAll()
-            processCameraProvider.bindToLifecycle(
-                lifecycleOwner,
-                cameraSelector,
-                preview,
-                imageAnalysis
-            ).apply {
-                cameraControl.enableTorch(torchState)
-            }
-        } catch (e: Exception) {
-            e.printStackTrace()
-        }
-        preview
+        return previewView
     }
 }

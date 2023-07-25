@@ -1,17 +1,13 @@
 package com.example.inv_app.domain.repository
 
+import android.view.View
 import androidx.camera.core.ImageAnalysis
-import androidx.camera.view.PreviewView
 import androidx.lifecycle.LifecycleOwner
-import java.util.concurrent.Executor
 
 interface ScannerRepository {
 
-    suspend fun showCameraPreview(
-        previewView: PreviewView,
+    fun showCameraPreview(
         lifecycleOwner: LifecycleOwner,
-        executor: Executor,
-        analyzer: ImageAnalysis.Analyzer,
-        torchState: Boolean
-    )
+        analyzer: ImageAnalysis.Analyzer
+    ): View
 }
