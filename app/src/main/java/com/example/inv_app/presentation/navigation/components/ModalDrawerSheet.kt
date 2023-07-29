@@ -1,16 +1,15 @@
-package com.example.inv_app.presentation.navigation.view
+package com.example.inv_app.presentation.navigation.components
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.DrawerState
-import androidx.compose.runtime.Composable
 import androidx.compose.material3.ModalDrawerSheet
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.inv_app.presentation.navigation.NavigationItems
 import kotlinx.coroutines.CoroutineScope
 
 @Composable

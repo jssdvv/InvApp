@@ -1,15 +1,14 @@
-package com.example.inv_app.presentation.navigation.view
+package com.example.inv_app.presentation.navigation.components
 
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.Icon
-import androidx.compose.runtime.Composable
-import  androidx.compose.material3.NavigationDrawerItem
+import androidx.compose.material3.NavigationDrawerItem
 import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import com.example.inv_app.presentation.navigation.NavigationItems
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 

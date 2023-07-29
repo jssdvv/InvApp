@@ -14,9 +14,7 @@ class MLKitBarcodeAnalyzer(
 
     private val barcodeScannerOptions = BarcodeScannerOptions.Builder()
         .setBarcodeFormats(
-            Barcode.FORMAT_QR_CODE,
-            Barcode.FORMAT_CODE_128,
-            Barcode.FORMAT_CODE_39
+            Barcode.FORMAT_ALL_FORMATS
         )
         .build()
 

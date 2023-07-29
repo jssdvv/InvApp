@@ -1,4 +1,4 @@
-package com.example.inv_app.presentation.screens.reports_screen
+package com.example.inv_app.presentation.features.reports
 
 import androidx.compose.runtime.Composable
 

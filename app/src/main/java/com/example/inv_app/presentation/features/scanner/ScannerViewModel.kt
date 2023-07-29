@@ -1,4 +1,4 @@
-package com.example.inv_app.presentation.screens.scanner_screen
+package com.example.inv_app.presentation.features.scanner
 
 import android.view.View
 import androidx.camera.core.ImageAnalysis

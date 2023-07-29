@@ -1,9 +1,9 @@
-package com.example.inv_app.presentation.navigation.view
+package com.example.inv_app.presentation.navigation.components
 
-import androidx.compose.runtime.Composable
-import androidx.compose.material3.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material3.*
+import androidx.compose.runtime.Composable
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
