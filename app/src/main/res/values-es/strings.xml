@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">InvApp</string>
+    <string name="home">Inicio</string>
+    <string name="scanner">Escáner</string>
+    <string name="lists">Listados</string>
+    <string name="reports">Informes</string>
+    <string name="formats">Formatos</string>
+    <string name="directory">Directorio</string>
+    <string name="brand">InvApp</string>
+</resources>
