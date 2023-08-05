@@ -4,45 +4,45 @@ import com.example.inv_app.R
 import com.example.inv_app.presentation.navigation.FeaturesRoutes
 
 sealed class NavigationItems(
-    val title: String,
+    val title: Int,
     val icon: Int,
-    val description: String,
+    val iconDescription: String,
     val route: String
 ) {
     object homeItem : NavigationItems(
-        title = "Inicio",
+        title = R.string.home,
         icon = R.drawable.home_icon,
-        description = "Inicio",
+        iconDescription = "Icon of homeNavGraph item destination",
         route = FeaturesRoutes.home.route
     )
     object scannerItem : NavigationItems(
-        title = "Escáner",
+        title = R.string.scanner,
         icon = R.drawable.scanner_icon,
-        description = "Escáner",
+        iconDescription = "Icon of scannerNavGraph item destination",
         route = FeaturesRoutes.scanner.route
     )
     object listsItem : NavigationItems(
-        title = "Listados",
+        title = R.string.lists,
         icon = R.drawable.lists_icon,
-        description = "Listados",
+        iconDescription = "Icon of listsNavGraph item destination",
         route = FeaturesRoutes.lists.route
     )
     object reportsItem : NavigationItems(
-        title = "Informes",
+        title = R.string.reports,
         icon = R.drawable.reports_icon,
-        description = "Informes",
+        iconDescription = "Icon of reportsNavGraph item destination",
         route = FeaturesRoutes.reports.route
     )
     object formatsItem : NavigationItems(
-        title = "Formatos",
+        title = R.string.formats,
         icon = R.drawable.formats_icon,
-        description = "Formatos",
+        iconDescription = "Icon of formatsNavGraph item destination",
         route = FeaturesRoutes.formats.route
     )
-    object contactsItem : NavigationItems(
-        title = "Contactos",
+    object directoryItem : NavigationItems(
+        title = R.string.directory,
         icon = R.drawable.contacts_icon,
-        description = "Contactos",
-        route = FeaturesRoutes.contacts.route
+        iconDescription = "Icon of directoryNavGraph item destination",
+        route = FeaturesRoutes.directory.route
     )
 }
