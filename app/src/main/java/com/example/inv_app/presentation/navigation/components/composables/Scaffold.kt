@@ -6,12 +6,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import com.example.inv_app.presentation.navigation.NavHost
-import kotlinx.coroutines.CoroutineScope
 
 @Composable
 fun Scaffold(
     drawerState: DrawerState,
-    scope: CoroutineScope,
     navController: NavHostController
 ) {
     Scaffold(
@@ -19,7 +17,6 @@ fun Scaffold(
         topBar = {
             TopAppBar(
                 drawerState,
-                scope
             )
         },
     ) { paddingValues ->
