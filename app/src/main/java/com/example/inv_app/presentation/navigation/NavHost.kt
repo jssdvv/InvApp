@@ -6,13 +6,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import com.example.inv_app.presentation.features.ContactsView
-import com.example.inv_app.presentation.features.FormatsView
-import com.example.inv_app.presentation.features.home.HomeView
-import com.example.inv_app.presentation.features.lists.ListsScreen
-import com.example.inv_app.presentation.features.reports.ReportsView
-import com.example.inv_app.presentation.navigation.graphs.scannerNavGraph
+import com.example.inv_app.presentation.navigation.graphs.*
 
 sealed class FeaturesRoutes(val route: String) {
     object home : FeaturesRoutes("homeFeature")
@@ -20,7 +14,7 @@ sealed class FeaturesRoutes(val route: String) {
     object lists : FeaturesRoutes("listsFeature")
     object reports : FeaturesRoutes("reportsFeature")
     object formats : FeaturesRoutes("formatsFeature")
-    object contacts : FeaturesRoutes("contactsFeature")
+    object directory : FeaturesRoutes("directoryFeature")
 }
 
 @Composable
@@ -33,11 +27,11 @@ fun NavHost(
         navController = navController,
         startDestination = FeaturesRoutes.home.route
     ) {
+        homeNavGraph(navController)
         scannerNavGraph(navController)
-        composable(FeaturesRoutes.home.route) { HomeView() }
-        composable(FeaturesRoutes.lists.route) { ListsScreen() }
-        composable(FeaturesRoutes.reports.route) { ReportsView() }
-        composable(FeaturesRoutes.formats.route) { FormatsView() }
-        composable(FeaturesRoutes.contacts.route) { ContactsView() }
+        listsNavGraph(navController)
+        reportsNavGraph(navController)
+        formatsNavGraph(navController)
+        directoryNavGraph(navController)
     }
 }

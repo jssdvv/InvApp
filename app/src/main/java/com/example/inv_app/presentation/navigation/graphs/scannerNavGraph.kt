@@ -8,7 +8,7 @@ import com.example.inv_app.presentation.features.scanner.ScannerHistoryScreen
 import com.example.inv_app.presentation.features.scanner.ScannerScreen
 import com.example.inv_app.presentation.navigation.FeaturesRoutes
 
-sealed class ScannerRoutes(val route: String) {
+internal sealed class ScannerRoutes(val route: String) {
     object scanner : ScannerRoutes("scannerScreen")
     object history : ScannerRoutes("historyScreen")
 }
