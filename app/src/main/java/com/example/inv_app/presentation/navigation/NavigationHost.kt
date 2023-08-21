@@ -1,12 +1,12 @@
 package com.example.inv_app.presentation.navigation
 
-import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.DrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import com.example.inv_app.presentation.navigation.graphs.*
+import kotlinx.coroutines.flow.MutableStateFlow
 
 sealed class FeaturesRoutes(val route: String) {
     object home : FeaturesRoutes("homeFeature")
@@ -18,17 +18,19 @@ sealed class FeaturesRoutes(val route: String) {
 }
 
 @Composable
-fun NavHost(
-    paddingValues: PaddingValues,
-    navController: NavHostController
+fun NavigationHost(
+    navController: NavHostController,
+    drawerState: DrawerState,
+    isGesturesEnabled: MutableStateFlow<Boolean>
 ) {
     NavHost(
-        modifier = Modifier.padding(paddingValues),
+        modifier = Modifier,
         navController = navController,
-        startDestination = FeaturesRoutes.home.route
+        startDestination = FeaturesRoutes.home.route,
+        route = null
     ) {
         homeNavGraph(navController)
-        scannerNavGraph(navController)
+        searchNavGraph(navController, drawerState, isGesturesEnabled)
         listsNavGraph(navController)
         reportsNavGraph(navController)
         formatsNavGraph(navController)
