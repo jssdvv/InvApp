@@ -1,4 +1,4 @@
-package com.example.inv_app.presentation.navigation.components.composables
+package com.example.inv_app.presentation.navigation.components
 
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -13,15 +13,14 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import com.example.inv_app.presentation.navigation.components.NavigationItems
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
 fun NavigationDrawerItem(
-    item: NavigationItems,
-    drawerState: DrawerState,
     navController: NavHostController,
+    drawerState: DrawerState,
+    item: NavigationItems,
     coroutineScope: CoroutineScope = rememberCoroutineScope()
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
@@ -47,9 +46,8 @@ fun NavigationDrawerItem(
         selected = currentGraphRoute == item.route,
         onClick = {
             navController.navigate(item.route) {
-                popUpTo(navController.graph.findStartDestination().id){
-                    inclusive = true
-                    saveState = true
+                popUpTo(navController.graph.findStartDestination().id ) {
+                    inclusive = false
                 }
                 launchSingleTop = true
                 restoreState = true
