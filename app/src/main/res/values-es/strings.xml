@@ -2,10 +2,14 @@
 <resources>
     <string name="app_name">InvApp</string>
     <string name="home">Inicio</string>
-    <string name="scanner">Escáner</string>
+    <string name="search">Busqueda</string>
     <string name="lists">Listados</string>
     <string name="reports">Informes</string>
     <string name="formats">Formatos</string>
     <string name="directory">Directorio</string>
     <string name="brand">InvApp</string>
+    <string name="search_scanner_title">Escaner</string>
+    <string name="search_history_title">Historial</string>
+    <string name="search_detail_title">Detalles</string>
+    <string name="flash_available">"Tu dispositivo no tiene una unidad de flash.</string>
 </resources>
