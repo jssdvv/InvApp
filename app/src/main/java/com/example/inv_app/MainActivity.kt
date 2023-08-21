@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.inv_app.presentation.navigation.components.composables.ModalNavigationDrawer
+import com.example.inv_app.presentation.navigation.components.ModalNavigationDrawer
 import com.example.inv_app.ui.theme.InvAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
